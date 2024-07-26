@@ -145,22 +145,22 @@
 
 
 		fetch("http://127.0.0.1:8000/chat", {
-			method: "POST",
-			body: JSON.stringify({'message': {'content': input, 'id': chat_id}}),
-			headers: {
-				"Content-Type": "application/json"
-			}
-		}).then(response => 
-			response.json()
-		).then(json => json.message.content
-		).catch(error => {
-			return "No connection to Agent. Please make your agent available under localhost:8000/chat."
-		}).then(msg => 
-		{
-			const ai = create_ai_message(msg)
-			el.appendChild(ai)
-			el.scrollTop = el.scrollHeight
-		})
+		method: "POST",
+		body: JSON.stringify({'message': {'content': input, 'id': chat_id}}),
+		headers: {
+			"Content-Type": "application/json"
+		}
+	}).then(response => 
+		response.json()
+	).then(json => json.message.content
+	).catch(error => {
+		return "No connection to Agent. Please make your agent available under localhost:8000/chat."
+	}).then(msg => 
+	{
+		const ai = create_ai_message(msg)
+		el.appendChild(ai)
+		el.scrollTop = el.scrollHeight
+	})
 
 	})
 
